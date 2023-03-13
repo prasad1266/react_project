@@ -2,10 +2,16 @@ import { useState } from 'react';
 
 import './App.css';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 
 import Navbar from './components/Navbar';
-import Textform from './components/TextForm';
+import Textform from './components/TextForm'; 
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -44,15 +50,19 @@ function App() {
 
     <>
 
-      <Navbar title="textutil" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
+      {/* <Navbar title="textutil" mode={mode} toggleMode={toggleMode} />
+      <Alert alert={alert} /> */}
      
-
+<Router>
+  <Navbar title="textutil" mode={mode} toggleMode={toggleMode} />
+      <Alert alert={alert} />
       <div className="container my-3">
-        <Textform  showAlert={showAlert} heading="Enter The text to Anlyze:" />
-        {/* <About/> */}
+      <Routes>
+          <Route path="/about" element={<About />}/>cd
+          <Route path="/" element={<Textform  showAlert={showAlert} heading="Enter The text to Anlyze below" mode={mode} />}/>
+        </Routes >
       </div>
-
+      </Router>
     </>
   );
 }

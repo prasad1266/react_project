@@ -43,7 +43,7 @@ export default function Textform(props) {
         <>
             <div className='container' >
                 <h1>{props.heading}</h1>
-                <div className="mb-3" style={{ color: props.mode === 'dark' ? 'gray' : 'black' }}>
+                <div className="mb-3" style={{ color: props.mode ==='dark' ? 'gray' : 'black' }}>
                     <textarea className='form-control' style={{ backgroundColor: props.mode === 'dark' ? 'white' : '#000000' }} value={text} onChange={handleonchange}  id="mybox" rows="8"></textarea>
 
                 </div>
@@ -52,7 +52,7 @@ export default function Textform(props) {
                 <button className="btn btn-primary mx-2" onClick={handleuClear}>Clear</button>
                 <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy</button>
             </div>
-            <div className="container my=5" style={{ color:  props.mode === 'dark' ? 'white' : '#000000' }}>
+            <div className="container my=5" style={{ color:  props.mode==='dark'? 'white':'#000000' }}>
                 <h1>Heading summary</h1>
                 <p>
                     {text.split(" ").length-1} <b>words</b> and {text.length} characters
