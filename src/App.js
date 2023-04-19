@@ -28,21 +28,32 @@ function App() {
   }, 2000);
 
   }
+const removeBodyClasses=() =>{
+  document.body.classList.remove('bg-light')
+  document.body.classList.remove('bg-dark')
+  document.body.classList.remove('bg-success')
+  document.body.classList.remove('bg-warning')
+  document.body.classList.remove('bg-danger')
 
+}
 
-  const toggleMode = () => {
+  const toggleMode = (cls) => {
+    removeBodyClasses();
+    console.log(cls)
+    document.body.classList.add('bg-'+cls)
+
     if (mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor = '#283447';
       showAlert("Dark mode Enabled", "success");
-      document.title='Textutils-DarkMode';
+      // document.title='Textutils-DarkMode';
     }
     
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode Enabled", "success")
-      document.title='Textutils-LightMode';
+      // document.title='Textutils-LightMode';
     }
   }
 
@@ -58,8 +69,8 @@ function App() {
       <Alert alert={alert} />
       <div className="container my-3">
       <Routes>
-          <Route path="/about" element={<About />}/>cd
-          <Route path="/" element={<Textform  showAlert={showAlert} heading="Enter The text to Anlyze below" mode={mode} />}/>
+          <Route exact path="/about" element={<About />}  mode={mode} />
+          <Route exact path="/" element={<Textform  showAlert={showAlert} heading="Enter The text to Anlyze below" mode={mode} />}/>
         </Routes >
       </div>
       </Router>
